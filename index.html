@@ -105,6 +105,7 @@
     <h5 class="text-dark">🛒 السلة:</h5>
     <ul id="cart-items" class="mb-2"></ul>
     <button class="btn btn-success" id="checkout-btn">تنفيذ الطلب</button>
+    <button class="btn btn-primary mt-2 d-none" id="send-order">إرسال الطلب</button>
   </div>
 
   <!-- نموذج الطلب -->
@@ -114,7 +115,6 @@
     <input type="text" id="phone" class="form-control mb-2" placeholder="رقم الهاتف" required>
     <input type="text" id="address" class="form-control mb-2" placeholder="العنوان الكامل" required>
     <input type="text" id="landmark" class="form-control mb-2" placeholder="أقرب نقطة دالة" required>
-    <button class="btn btn-primary" id="send-order">إرسال الطلب</button>
   </div>
 
   <script>
@@ -146,6 +146,8 @@
         return;
       }
       document.getElementById('checkout-form').style.display = 'block';
+      document.getElementById('checkout-btn').classList.add('d-none');
+      document.getElementById('send-order').classList.remove('d-none');
       window.scrollTo(0, document.body.scrollHeight);
     });
 
@@ -190,6 +192,8 @@
         document.getElementById('phone').value = '';
         document.getElementById('address').value = '';
         document.getElementById('landmark').value = '';
+        document.getElementById('checkout-btn').classList.remove('d-none');
+        document.getElementById('send-order').classList.add('d-none');
       })
       .catch(() => alert("❌ حدث خطأ أثناء الإرسال."));
     });
