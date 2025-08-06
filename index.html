@@ -1,1 +1,199 @@
-<!DOCTYPE html><html><head><meta charset='utf-8'><title>طلب اجهزه السكر المستمر</title><style>body,html{margin:0;height:100%;background:#000} img{width:100%;height:100%;object-fit:contain}</style></head><body><img src="519489523_746375451472675_4975832362055561036_n.jpg"></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>حجز أجهزة قياس السكر المستمر</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fffbea;
+    }
+    .product-card {
+      border: 2px solid #ffc107;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .cart {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background: #fff3cd;
+      padding: 15px;
+      border-top: 2px solid #ffc107;
+      z-index: 1000;
+    }
+    .form-popup {
+      display: none;
+      background: white;
+      border: 2px solid #ffc107;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 100px;
+    }
+  </style>
+</head>
+<body class="container py-4">
+
+  <h2 class="text-center mb-4 text-warning">🩺 حجز أجهزة قياس السكر المستمر</h2>
+  <div class="row g-4">
+
+    <!-- المنتجات -->
+    <div class="col-sm-6 col-lg-3">
+      <div class="product-card text-center">
+        <img src="1.jpg" class="img-fluid mb-2" alt="منتج 1">
+        <h5>جهاز ديكسكوم G6</h5>
+        <p class="text-warning fw-bold">السعر: $150</p>
+        <select class="form-select my-2 quantity" data-name="جهاز ديكسكوم G6" data-price="150">
+          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+          <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+          <option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+        </select>
+        <button class="btn btn-warning w-100 add-to-cart">إضافة إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+      <div class="product-card text-center">
+        <img src="2.jpg" class="img-fluid mb-2" alt="منتج 2">
+        <h5>جهاز فري ستايل ليبري 2</h5>
+        <p class="text-warning fw-bold">السعر: $120</p>
+        <select class="form-select my-2 quantity" data-name="جهاز فري ستايل ليبري 2" data-price="120">
+          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+          <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+          <option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+        </select>
+        <button class="btn btn-warning w-100 add-to-cart">إضافة إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+      <div class="product-card text-center">
+        <img src="3.jpg" class="img-fluid mb-2" alt="منتج 3">
+        <h5>مجموعة مجسات ديكسكوم (5 حساسات)</h5>
+        <p class="text-warning fw-bold">السعر: $100</p>
+        <select class="form-select my-2 quantity" data-name="مجموعة مجسات ديكسكوم (5 حساسات)" data-price="100">
+          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+          <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+          <option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+        </select>
+        <button class="btn btn-warning w-100 add-to-cart">إضافة إلى السلة</button>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+      <div class="product-card text-center">
+        <img src="4.jpg" class="img-fluid mb-2" alt="منتج 4">
+        <h5>مجموعة مجسات ليبري (3 حساسات)</h5>
+        <p class="text-warning fw-bold">السعر: $80</p>
+        <select class="form-select my-2 quantity" data-name="مجموعة مجسات ليبري (3 حساسات)" data-price="80">
+          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+          <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+          <option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+        </select>
+        <button class="btn btn-warning w-100 add-to-cart">إضافة إلى السلة</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- السلة -->
+  <div class="cart mt-4">
+    <h5 class="text-dark">🛒 السلة:</h5>
+    <ul id="cart-items" class="mb-2"></ul>
+    <button class="btn btn-success" id="checkout-btn">تنفيذ الطلب</button>
+  </div>
+
+  <!-- نموذج الطلب -->
+  <div class="form-popup mt-3" id="checkout-form">
+    <h5>معلومات الزبون:</h5>
+    <input type="text" id="name" class="form-control mb-2" placeholder="الاسم الكامل" required>
+    <input type="text" id="phone" class="form-control mb-2" placeholder="رقم الهاتف" required>
+    <input type="text" id="address" class="form-control mb-2" placeholder="العنوان الكامل" required>
+    <input type="text" id="landmark" class="form-control mb-2" placeholder="أقرب نقطة دالة" required>
+    <button class="btn btn-primary" id="send-order">إرسال الطلب</button>
+  </div>
+
+  <script>
+    const cart = [];
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const select = this.previousElementSibling;
+        const name = select.dataset.name;
+        const price = parseFloat(select.dataset.price);
+        const qty = parseInt(select.value);
+        cart.push({ name, qty, price });
+        updateCart();
+      });
+    });
+
+    function updateCart() {
+      const cartList = document.getElementById('cart-items');
+      cartList.innerHTML = '';
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - الكمية: ${item.qty} - السعر: $${(item.price * item.qty).toFixed(2)}`;
+        cartList.appendChild(li);
+      });
+    }
+
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert("السلة فارغة!");
+        return;
+      }
+      document.getElementById('checkout-form').style.display = 'block';
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+
+    document.getElementById('send-order').addEventListener('click', () => {
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const landmark = document.getElementById('landmark').value.trim();
+
+      if (!name || !phone || !address || !landmark) {
+        alert("يرجى تعبئة جميع الحقول.");
+        return;
+      }
+
+      let message = "📦 طلب جديد:\n\n";
+      let total = 0;
+      cart.forEach(item => {
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+        message += `• ${item.name} - الكمية: ${item.qty} - السعر: $${itemTotal.toFixed(2)}\n`;
+      });
+      message += `\n💰 المجموع النهائي: $${total.toFixed(2)}\n`;
+      message += `\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n📍 العنوان: ${address}\n📌 أقرب نقطة: ${landmark}`;
+
+      const token = "7781140679:AAF7mJAwcUD34uRhYyh2HI_ZI68y0wZ2Pqg";
+      const chatId = "287498102";
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      })
+      .then(() => {
+        alert("✅ تم إرسال الطلب بنجاح!");
+        cart.length = 0;
+        updateCart();
+        document.getElementById('checkout-form').style.display = 'none';
+        document.getElementById('name').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('address').value = '';
+        document.getElementById('landmark').value = '';
+      })
+      .catch(() => alert("❌ حدث خطأ أثناء الإرسال."));
+    });
+  </script>
+
+</body>
+</html>
