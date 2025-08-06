@@ -8,6 +8,7 @@
   <style>
     body {
       background-color: #fffbea;
+      padding-bottom: 180px; /* حل مشكلة آخر منتج */
     }
     .product-card {
       border: 2px solid #ffc107;
@@ -32,7 +33,7 @@
       border: 2px solid #ffc107;
       padding: 15px;
       border-radius: 10px;
-      margin-bottom: 100px;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -41,7 +42,7 @@
   <h2 class="text-center mb-4 text-warning">🩺 حجز أجهزة قياس السكر المستمر</h2>
   <div class="row g-4">
 
-    <!-- المنتجات -->
+    <!-- المنتج 1 -->
     <div class="col-sm-6 col-lg-3">
       <div class="product-card text-center">
         <img src="1.jpg" class="img-fluid mb-2" alt="منتج 1">
@@ -56,6 +57,7 @@
       </div>
     </div>
 
+    <!-- المنتج 2 -->
     <div class="col-sm-6 col-lg-3">
       <div class="product-card text-center">
         <img src="2.jpg" class="img-fluid mb-2" alt="منتج 2">
@@ -70,6 +72,7 @@
       </div>
     </div>
 
+    <!-- المنتج 3 -->
     <div class="col-sm-6 col-lg-3">
       <div class="product-card text-center">
         <img src="3.jpg" class="img-fluid mb-2" alt="منتج 3">
@@ -84,6 +87,7 @@
       </div>
     </div>
 
+    <!-- المنتج 4 -->
     <div class="col-sm-6 col-lg-3">
       <div class="product-card text-center">
         <img src="4.jpg" class="img-fluid mb-2" alt="منتج 4">
@@ -100,6 +104,9 @@
 
   </div>
 
+  <!-- مساحة فارغة -->
+  <div style="height: 100px;"></div>
+
   <!-- السلة -->
   <div class="cart mt-4">
     <h5 class="text-dark">🛒 السلة:</h5>
@@ -109,7 +116,7 @@
   </div>
 
   <!-- نموذج الطلب -->
-  <div class="form-popup mt-3" id="checkout-form">
+  <div class="form-popup" id="checkout-form">
     <h5>معلومات الزبون:</h5>
     <input type="text" id="name" class="form-control mb-2" placeholder="الاسم الكامل" required>
     <input type="text" id="phone" class="form-control mb-2" placeholder="رقم الهاتف" required>
@@ -119,6 +126,7 @@
 
   <script>
     const cart = [];
+
     document.querySelectorAll('.add-to-cart').forEach(btn => {
       btn.addEventListener('click', function () {
         const select = this.previousElementSibling;
