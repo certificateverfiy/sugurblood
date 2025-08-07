@@ -35,7 +35,7 @@
       margin-top: 20px;
     }
     .cart-spacer {
-      height: 200px; /* ارتفاع مساوي للسلة */
+      height: 220px;
     }
   </style>
 </head>
@@ -109,21 +109,21 @@
   <!-- فراغ لحماية المنتج الأخير -->
   <div class="cart-spacer"></div>
 
-  <!-- السلة -->
-  <div class="cart mt-4">
-    <h5 class="text-dark">🛒 السلة:</h5>
-    <ul id="cart-items" class="mb-2"></ul>
-    <button class="btn btn-success" id="checkout-btn">تنفيذ الطلب</button>
-    <button class="btn btn-primary mt-2 d-none" id="send-order">إرسال الطلب</button>
-  </div>
-
-  <!-- نموذج معلومات الزبون -->
+  <!-- نموذج معلومات الزبون (صار فوق السلة) -->
   <div class="form-popup" id="checkout-form">
     <h5>معلومات الزبون:</h5>
     <input type="text" id="name" class="form-control mb-2" placeholder="الاسم الكامل" required>
     <input type="text" id="phone" class="form-control mb-2" placeholder="رقم الهاتف" required>
     <input type="text" id="address" class="form-control mb-2" placeholder="العنوان الكامل" required>
     <input type="text" id="landmark" class="form-control mb-2" placeholder="أقرب نقطة دالة" required>
+  </div>
+
+  <!-- السلة -->
+  <div class="cart mt-4">
+    <h5 class="text-dark">🛒 السلة:</h5>
+    <ul id="cart-items" class="mb-2"></ul>
+    <button class="btn btn-success" id="checkout-btn">تنفيذ الطلب</button>
+    <button class="btn btn-primary mt-2 d-none" id="send-order">إرسال الطلب</button>
   </div>
 
   <script>
