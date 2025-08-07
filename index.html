@@ -8,7 +8,6 @@
   <style>
     body {
       background-color: #fffbea;
-      padding-bottom: 180px; /* حل مشكلة آخر منتج */
     }
     .product-card {
       border: 2px solid #ffc107;
@@ -34,6 +33,9 @@
       padding: 15px;
       border-radius: 10px;
       margin-top: 20px;
+    }
+    .cart-spacer {
+      height: 200px; /* ارتفاع مساوي للسلة */
     }
   </style>
 </head>
@@ -104,8 +106,8 @@
 
   </div>
 
-  <!-- مساحة فارغة -->
-  <div style="height: 100px;"></div>
+  <!-- فراغ لحماية المنتج الأخير -->
+  <div class="cart-spacer"></div>
 
   <!-- السلة -->
   <div class="cart mt-4">
@@ -115,7 +117,7 @@
     <button class="btn btn-primary mt-2 d-none" id="send-order">إرسال الطلب</button>
   </div>
 
-  <!-- نموذج الطلب -->
+  <!-- نموذج معلومات الزبون -->
   <div class="form-popup" id="checkout-form">
     <h5>معلومات الزبون:</h5>
     <input type="text" id="name" class="form-control mb-2" placeholder="الاسم الكامل" required>
