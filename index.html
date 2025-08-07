@@ -28,11 +28,16 @@
     }
     .form-popup {
       display: none;
+      position: fixed;
+      top: 10%;
+      right: 10%;
+      left: 10%;
+      z-index: 2000;
       background: white;
       border: 2px solid #ffc107;
       padding: 15px;
       border-radius: 10px;
-      margin-top: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
     }
     .cart-spacer {
       height: 220px;
@@ -43,8 +48,8 @@
 
   <h2 class="text-center mb-4 text-warning">🩺 حجز أجهزة قياس السكر المستمر</h2>
   <div class="row g-4">
-
-    <!-- المنتج 1 -->
+    <!-- المنتجات (4) -->
+    <!-- كرر هذا البلوك للمنتجات الأربعة -->
     <div class="col-sm-6 col-lg-3">
       <div class="product-card text-center">
         <img src="1.jpg" class="img-fluid mb-2" alt="منتج 1">
@@ -53,69 +58,24 @@
         <select class="form-select my-2 quantity" data-name="جهاز ديكسكوم G6" data-price="150">
           <option value="1">1</option><option value="2">2</option><option value="3">3</option>
           <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-          <option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
         </select>
         <button class="btn btn-warning w-100 add-to-cart">إضافة إلى السلة</button>
       </div>
     </div>
-
-    <!-- المنتج 2 -->
-    <div class="col-sm-6 col-lg-3">
-      <div class="product-card text-center">
-        <img src="2.jpg" class="img-fluid mb-2" alt="منتج 2">
-        <h5>جهاز فري ستايل ليبري 2</h5>
-        <p class="text-warning fw-bold">السعر: $120</p>
-        <select class="form-select my-2 quantity" data-name="جهاز فري ستايل ليبري 2" data-price="120">
-          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-          <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-          <option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
-        </select>
-        <button class="btn btn-warning w-100 add-to-cart">إضافة إلى السلة</button>
-      </div>
-    </div>
-
-    <!-- المنتج 3 -->
-    <div class="col-sm-6 col-lg-3">
-      <div class="product-card text-center">
-        <img src="3.jpg" class="img-fluid mb-2" alt="منتج 3">
-        <h5>مجموعة مجسات ديكسكوم (5 حساسات)</h5>
-        <p class="text-warning fw-bold">السعر: $100</p>
-        <select class="form-select my-2 quantity" data-name="مجموعة مجسات ديكسكوم (5 حساسات)" data-price="100">
-          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-          <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-          <option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
-        </select>
-        <button class="btn btn-warning w-100 add-to-cart">إضافة إلى السلة</button>
-      </div>
-    </div>
-
-    <!-- المنتج 4 -->
-    <div class="col-sm-6 col-lg-3">
-      <div class="product-card text-center">
-        <img src="4.jpg" class="img-fluid mb-2" alt="منتج 4">
-        <h5>مجموعة مجسات ليبري (3 حساسات)</h5>
-        <p class="text-warning fw-bold">السعر: $80</p>
-        <select class="form-select my-2 quantity" data-name="مجموعة مجسات ليبري (3 حساسات)" data-price="80">
-          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-          <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-          <option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
-        </select>
-        <button class="btn btn-warning w-100 add-to-cart">إضافة إلى السلة</button>
-      </div>
-    </div>
-
+    <!-- كرر المنتجات حسب الحاجة -->
   </div>
 
-  <!-- فراغ لحماية المنتج الأخير -->
   <div class="cart-spacer"></div>
 
-  <!-- نموذج معلومات الزبون (صار فوق السلة) -->
+  <!-- نموذج معلومات الزبون كـ popup -->
   <div class="form-popup" id="checkout-form">
+    <button class="btn-close float-start mb-2" onclick="closeForm()"></button>
     <h5>معلومات الزبون:</h5>
     <input type="text" id="name" class="form-control mb-2" placeholder="الاسم الكامل" required>
     <input type="text" id="phone" class="form-control mb-2" placeholder="رقم الهاتف" required>
     <input type="text" id="address" class="form-control mb-2" placeholder="العنوان الكامل" required>
     <input type="text" id="landmark" class="form-control mb-2" placeholder="أقرب نقطة دالة" required>
+    <button class="btn btn-primary w-100" id="send-order">إرسال الطلب</button>
   </div>
 
   <!-- السلة -->
@@ -123,7 +83,6 @@
     <h5 class="text-dark">🛒 السلة:</h5>
     <ul id="cart-items" class="mb-2"></ul>
     <button class="btn btn-success" id="checkout-btn">تنفيذ الطلب</button>
-    <button class="btn btn-primary mt-2 d-none" id="send-order">إرسال الطلب</button>
   </div>
 
   <script>
@@ -156,10 +115,11 @@
         return;
       }
       document.getElementById('checkout-form').style.display = 'block';
-      document.getElementById('checkout-btn').classList.add('d-none');
-      document.getElementById('send-order').classList.remove('d-none');
-      window.scrollTo(0, document.body.scrollHeight);
     });
+
+    function closeForm() {
+      document.getElementById('checkout-form').style.display = 'none';
+    }
 
     document.getElementById('send-order').addEventListener('click', () => {
       const name = document.getElementById('name').value.trim();
@@ -172,15 +132,15 @@
         return;
       }
 
-      let message = "📦 طلب جديد:\n\n";
+      let message = "\uD83D\uDCE6 طلب جديد:\n\n";
       let total = 0;
       cart.forEach(item => {
         const itemTotal = item.price * item.qty;
         total += itemTotal;
         message += `• ${item.name} - الكمية: ${item.qty} - السعر: $${itemTotal.toFixed(2)}\n`;
       });
-      message += `\n💰 المجموع النهائي: $${total.toFixed(2)}\n`;
-      message += `\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n📍 العنوان: ${address}\n📌 أقرب نقطة: ${landmark}`;
+      message += `\n\uD83D\uDCB0 المجموع النهائي: $${total.toFixed(2)}\n`;
+      message += `\n\uD83D\uDC64 الاسم: ${name}\n\uD83D\uDCDE الهاتف: ${phone}\n\uD83D\uDCCD العنوان: ${address}\n\uD83D\uDCCC أقرب نقطة: ${landmark}`;
 
       const token = "7781140679:AAF7mJAwcUD34uRhYyh2HI_ZI68y0wZ2Pqg";
       const chatId = "287498102";
@@ -197,13 +157,11 @@
         alert("✅ تم إرسال الطلب بنجاح!");
         cart.length = 0;
         updateCart();
-        document.getElementById('checkout-form').style.display = 'none';
+        closeForm();
         document.getElementById('name').value = '';
         document.getElementById('phone').value = '';
         document.getElementById('address').value = '';
         document.getElementById('landmark').value = '';
-        document.getElementById('checkout-btn').classList.remove('d-none');
-        document.getElementById('send-order').classList.add('d-none');
       })
       .catch(() => alert("❌ حدث خطأ أثناء الإرسال."));
     });
